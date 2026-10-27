@@ -18,9 +18,7 @@ std::vector<std::string> read_return(std::istream& is) {
     std::string buf;
     std::vector<std::string> vec;
 
-    while (std::getline(is, buf)) {
-        vec.push_back(std::move(buf));
-    }
+    read(is, vec);
 
     return vec;
 }
@@ -33,11 +31,7 @@ void read_filename(const std::string& filename, std::vector<std::string>& vec) {
         throw std::runtime_error(std::string("error opening file: ") + filename);
     }
 
-    while (std::getline(is, buf)) {
-        vec.push_back(std::move(buf));
-    }
-
-    is.close();
+    read(is, vec);
 }
 
 std::vector<std::string> read_return_filename(const std::string& filename) {
@@ -49,32 +43,24 @@ std::vector<std::string> read_return_filename(const std::string& filename) {
         throw std::runtime_error(std::string("error opening file: ") + filename);
     }
 
-    while (std::getline(is, buf)) {
-        vec.push_back(std::move(buf));
-    }
-
-    is.close();
+    read(is, vec);
 
     return vec;
 }
 
 
-void write(std::ostream& os, std::vector<std::string>& vec) {
+void write(std::ostream& os, const std::vector<std::string>& vec) {
     for (const auto& str : vec) {
         os << str << '\n';
     }
 }
 
-void write_filename(const std::string& filename, std::vector<std::string>& vec) {
+void write_filename(const std::string& filename, const std::vector<std::string>& vec) {
     std::ofstream os(filename);
 
     if (!os) {
         throw std::runtime_error(std::string("error opening file: ") + filename);
     }
 
-    for (const auto& str : vec) {
-        os << str << '\n';
-    }
-
-    os.close();
+    write(os, vec);
 }
