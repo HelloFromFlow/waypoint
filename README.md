@@ -5,8 +5,9 @@ an absurdly simple file io utility for C++
 coding examples:
 
 reading from file by path:
-```
+```cpp
 #include "waypoint.hpp"
+#include <vector>
 #include <iostream>
 
 int main() {
@@ -22,8 +23,10 @@ int main() {
 }
 ```
 writing to file via ofstream object:
-```
+```cpp
 #include "waypoint.hpp"
+#include <fstream>
+#include <vector>
 
 int main() {
   std::ofstream file("a.txt");
