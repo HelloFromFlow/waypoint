@@ -17,7 +17,6 @@ namespace wp {
     }
 
     inline std::vector<std::string> read_return(std::istream& is) {
-        std::string buf;
         std::vector<std::string> vec;
 
         read(is, vec);
@@ -26,7 +25,6 @@ namespace wp {
     }
 
     inline void read_filename(const std::string& filename, std::vector<std::string>& vec) {
-        std::string buf;
         std::ifstream is(filename);
 
         if (!is) {
@@ -37,7 +35,6 @@ namespace wp {
     }
 
     inline std::vector<std::string> read_return_filename(const std::string& filename) {
-        std::string buf;
         std::vector<std::string> vec;
         std::ifstream is(filename);
 
